@@ -1,0 +1,49 @@
+.sidenav-section {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 1rem 0;
+    background-color: blue;
+    width: 10vw;
+}
+
+a:link {
+    text-decoration: none;
+    
+}
+
+a:link .menu-box, a:link .refresh-box, a:link .insert-chart-box {
+    border-left:solid 3px transparent ;
+    padding-left: 0.5rem;
+}
+
+a:focus .menu-box, a:focus .refresh-box, a:focus .insert-chart-box {
+    border-left:solid 3px orange ;
+}
+
+.shopping-cart-box {
+    border-radius: 50%;
+    background-color: orange;
+    max-width: 2rem;
+    padding: 1rem;
+    margin-top: 11rem;
+}
+
+.menu-box {
+    max-height: 3rem;
+}
+
+.logo {
+    max-width: 3rem;
+}
+
+.shopping-cart, .refresh, .insert-chart {
+    font-size: 0.5rem;
+}
+
+.logo {
+    margin-bottom: 11rem;
+}
+
+.refresh {
+    margin: 3rem 0;
+}

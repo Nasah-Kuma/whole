@@ -1,0 +1,19 @@
+.flex-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 26px 45px;
+}
+
+.flex-container div {
+  align-self: center;
+}
+.test {
+  background: #fff;
+}
+
+.history {
+  padding: 42px 0;
+}
+

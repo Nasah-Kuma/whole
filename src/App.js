@@ -8,7 +8,7 @@ import Home from './pages/Home/home';
 
 function App() {
   return (
-    <div>
+    <div className="content">
       <ToastContainer />
       <Routes>
         <Route path="/" element={<SignInPage />} />

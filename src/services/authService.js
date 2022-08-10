@@ -11,13 +11,20 @@ export const signIn = async (payload) => {
     const data = await axiosInstance.post('/login', payload);
     return data;
   } catch (e) {
+    console.log(e);
     return e;
   }
 };
 
 export const registration = async (payload) => {
-  const data = await axiosInstance.post('/', payload);
-  return data;
+  try {
+    const data = await axiosInstance.post('/', payload);
+    console.log(data);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
 };
 
 export const getProfile = async (userId) => {

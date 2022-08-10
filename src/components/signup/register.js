@@ -1,31 +1,36 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../app/authReducer/authReducer';
+import { toast } from 'react-toastify';
+import { createUser } from '../../app/authReducer/authReducer';
 
-const Signin = () => {
+const Register = () => {
   const state = useSelector(((state) => state.auth));
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register, handleSubmit, formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    toast.promise(dispatch(login(data)), {
-      pending: 'Logging user',
-      success: 'user logged in',
-      error: 'error logging in user',
+    // console.log(data);
+    toast.promise(dispatch(createUser(data)), {
+      pending: 'creating user',
+      success: 'user created',
+      error: 'error creating user',
     });
-    navigate('/home');
+    navigate('/');
   };
   return (
     <div>
-      {
-        (state.isError) ? (<small className="text-danger"> incorrect password or email </small>) : ''
-      }
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <input type="text" className="form-control form-control-lg" id="name" placeholder="John Doe" {...register('name', { required: true })} />
+          <small>
+            {errors.name && <span>This field is required</span>}
+          </small>
+        </div>
         <div className="mb-3">
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <input type="email" className="form-control form-control-lg" id="email" placeholder="Email: name@example.com" {...register('email', { required: true })} />
@@ -40,13 +45,13 @@ const Signin = () => {
         </div>
         <div>
           <button type="submit" className={(state.isLoading) ? ('btn btn-lg btn-danger col-12 disabled') : ('btn btn-lg btn-danger col-12')}>
-            { (state.isLoading) ? (
+            {(state.isLoading) ? (
               <div className="spinner-border text-light" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
             ) : (
               <span className="p-2">
-                Login
+                Sign Up
               </span>
             )}
           </button>
@@ -56,4 +61,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Register;

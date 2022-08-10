@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Signin from '../../components/signin/signin';
 import logo from '../../images/shoppingify-logo.png';
-import './signin.css';
+import Register from '../../components/signup/register';
 
-const SignInPage = () => (
+const SignupPage = () => (
   <div>
     <div className="text-center">
       <img src={logo} alt="app logo" className="small" />
@@ -16,10 +15,10 @@ const SignInPage = () => (
             <div className="text-center p-2">
               <h3> Welcome to Shoppingify </h3>
               <small> Please provide your email and password to login </small>
-            </div>
-            <Signin />
-            <div className="text-center p-4">
-              <Link to="/signup"> I dont have an Account? Create Account </Link>
+              <Register />
+              <div className="p-4">
+                <Link to="/"> I have an account! sign in </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -28,4 +27,4 @@ const SignInPage = () => (
   </div>
 );
 
-export default SignInPage;
+export default SignupPage;

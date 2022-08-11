@@ -19,7 +19,7 @@ export const getUserDetails = createAsyncThunk('userDetails',
     return data;
   });
 
-const initialState = { isLoading: false };
+const initialState = { isLoading: false, isError: false, isAuthenticated: false };
 
 const authSlice = createSlice({
   name: 'authSlice',
@@ -38,9 +38,18 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [createUser.pending]: (state) => ({ ...state, isLoading: true }),
-    [createUser.fulfilled]: (state) => ({ ...state, isloading: false }),
-    [login.pending]: (state) => ({ ...state, isLoading: true }),
-    [login.fulfilled]: (state, action) => ({ ...state, isLoading: false, ...action.payload }),
+    // eslint-disable-next-line max-len
+    [createUser.fulfilled]: (state, action) => ({ ...state, isLoading: false, data: action.payload.data }),
+    [login.pending]: (state) => ({ ...state, isLoading: true, isAuthenticated: false }),
+    [login.fulfilled]: (state, action) => {
+      sessionStorage.setItem('accessToken', action.payload.data.accessToken);
+      return {
+        ...state, isLoading: false, isAuthenticated: true, ...action.payload,
+      };
+    },
+    [login.rejected]: (state, action) => ({
+      ...state, isLoading: false, isError: true, isAuthenticated: false, data: action.payload,
+    }),
     [getUserDetails.pending]: (state) => ({ ...state, isLoading: true }),
     [getUserDetails.fulfilled]: (state, action) => (
       { ...state, isLoading: false, ...action.payload }),

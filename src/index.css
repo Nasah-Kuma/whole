@@ -15,3 +15,16 @@ code {
 .bg-orange {
   background: #F9A109;
 }
+
+.small {
+  height: 250px;
+}
+
+.icon {
+  height: 70px;
+  width: 70px;
+}
+
+.bg-brown {
+  background: #80485B;
+}

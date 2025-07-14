@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Getting Started with Whole Ecommerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+This is an online store(for testing purposes) hosted at https://vims-ecommerce.netlify.app/home
 
 ## Available Scripts
 
